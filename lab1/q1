@@ -1,0 +1,28 @@
+#Write a shell script to print the name of the month if the month number is given (using 'case'
+#construct).
+
+
+#!/bin/bash
+echo -n "Enter Number"
+echo -n
+read mon
+while [ $mon -le 0 -o $mon -gt 12 ]
+do
+	echo "Wrong number"
+	echo -n
+	read mon
+done
+case $mon in
+	1) echo "January";;
+	2) echo "February";;
+	3) echo "March";;
+	4) echo "April";;
+	5) echo "May";;
+	6) echo "June";;
+	7) echo "July";;
+	8) echo "August";;
+	9) echo "September";;
+	10) echo "October";;
+	11) echo "November";;
+	12) echo "December";;
+esac

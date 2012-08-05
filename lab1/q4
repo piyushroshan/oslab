@@ -1,0 +1,21 @@
+
+#Write a script to create your own customized shell prompt. After executing the script the
+#system shall end up with a prompt with your name and you should be able to execute your
+#scripts with short commands.
+
+
+#export PS1='[piyush]'
+#alias ques1='bash ./q1'
+#alias ques2='bash ./q2'
+#alias ques3='bash ./q3'
+#alias ques4='bash ./q4'
+#alias ques5='bash ./q5'
+
+
+export PATH=$PATH:`pwd`
+while :
+    do
+        echo -n "roshan `pwd` > "
+            read comm
+                $comm
+                done

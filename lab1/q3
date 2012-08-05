@@ -1,0 +1,9 @@
+#Develop a shell script for adding two given numbers using functions construct. It should
+#accept two numbers as command line arguments.
+
+
+function sum(){
+echo $[ $1+$2 ];
+}
+
+

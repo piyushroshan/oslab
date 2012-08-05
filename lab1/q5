@@ -1,0 +1,15 @@
+#Write a shell script to read two words and a filename from the command line and replace the
+#occurences of first word with the second word in the given file.
+
+
+
+echo "Enter text to replace"
+read text1
+echo  "Enter text to replace with "
+read text2
+echo "Enter file name"
+read file
+replace -s $text1 $text2 -- $file
+
+#`sed -i 's/'$1'/'$2'/g' $3 `
+

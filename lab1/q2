@@ -1,0 +1,13 @@
+#Write a script and put the script in .profile, the script should run as soon as you log on to the
+#system and it should print any one of the following message : “good morning” or “good
+#afternoon” according to your system time.
+
+
+HOUR=`/bin/date +%H`
+USER=`whoami`
+if [ $HOUR -lt 12 ] ; then
+    GREETING_TIME="Morning"
+else
+    GREETING_TIME="Afternoon"
+fi
+echo "Good $GREETING_TIME, $USER. Your wish is my command."
