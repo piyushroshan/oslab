@@ -1,0 +1,5 @@
+if cmp -s $1 $2 >/dev/null ; then
+	echo "Same"
+else
+	echo "Different"
+fi

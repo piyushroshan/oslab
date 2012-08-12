@@ -1,0 +1,7 @@
+# q5. Move all hidden files from a given directory to a newly created directory.
+
+#Usage: bash q5 <dir_name> <new_dir_name>
+
+mkdir $2
+mv $1/.[!.]* $2
+
