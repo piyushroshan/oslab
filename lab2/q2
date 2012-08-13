@@ -1,3 +1,7 @@
+#2. To check whether the two file contents are same or not. Given two file names as
+#arguments.
+
+
 if cmp -s $1 $2 >/dev/null ; then
 	echo "Same"
 else

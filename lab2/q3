@@ -1,1 +1,5 @@
+#3. To print the contents of a file from a given line number to another given line number.
+#Get arguments (file name, first line number, second line number) from command
+#line.
+
 head -n $3 $1 | tail -n $(($3 - $2 + 1)) 
