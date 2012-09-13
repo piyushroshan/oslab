@@ -1,11 +1,56 @@
- #include<stdio.h>
 
-int main(int argn,char** argv){
+#include <stdlib.h>	
+#include <unistd.h>   // for execlp 
+#include <sys/syscall.h>
+#include <errno.h>
+#include <sys/types.h>
+#include <string.h>
+#include <stdio.h>
+#include <stdarg.h>
+#include <sys/types.h>
+#include <errno.h>
+#include <signal.h>
+#include <sys/wait.h>
 
-int num=atoi(argv[1]);
+void error(char *message, ...)
+{
+	va_list args;
 
-printf("%lf %d",num*0.5,getpid());
+	va_start(args, message);
+	fprintf(stderr, "error: ");
+	vfprintf(stderr, message, args);
+	fprintf(stderr, "\n");
+	va_end(args);
+	exit(1);
+}
 
-return 0;
+int main(int argc,char** argv)
+{
+	float num=atof(argv[argc-1]);
+	num=num/2;
+	if(argc>2)
+	{
+		printf("Half %d\t",getpid());
+		char temp[100];
+		strcpy(temp,"./");
+		strcat(temp,argv[1]);   
 
+		char buffer[5];
+		printf("\n");
+		//itoa(num, buffer, 10);
+		sprintf(buffer, "%lf", num);
+		strcpy(argv[argc-1],buffer);
+		argv[1]=temp;
+		//sleep(1);
+		printf("%d",execvp(argv[1],&argv[1]));
+	}
+	else if (argc==2){
+		printf("Result: %lf\tProcessid: %d\n",num,getpid());
+	}
+	else
+	{
+		printf("Invalid argument\n");
+	}
+
+	return 0;
 }

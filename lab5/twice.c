@@ -1,4 +1,5 @@
-#include <stdlib.h>  
+
+#include <stdlib.h>	
 #include <unistd.h>   // for execlp 
 #include <sys/syscall.h>
 #include <errno.h>
@@ -10,33 +11,45 @@
 #include <errno.h>
 #include <signal.h>
 #include <sys/wait.h>
-int main(int argc,char** argv){
-  int num=atoi(argv[argc-1]);
-if(argc==2)
-{
-  
-  printf("%d %d",num*2,getpid());
-  return 0;
-}
-else
-{
-  printf("%d",getpid());
-  char temp[80];
-  strcpy(temp,"./");
-  num=2*num;
-  char buffer[80];
-  char **rest;
-  sprintf(buffer,"%d",num);
-  printf("BUFFER %s",buffer);
-  rest=&argv[1];
 
-  printf(" RESTI %s",rest[2]);
-//   rest[argc-3]=buffer;
-//   printf("RESTF %s",*rest);
-//   strcat(temp,argv[1]);
-//   printf("%d",execvp(temp,rest));
-  printf("error\n");
-  exit(-1);
-return 0;
+void error(char *message, ...)
+{
+	va_list args;
+
+	va_start(args, message);
+	fprintf(stderr, "error: ");
+	vfprintf(stderr, message, args);
+	fprintf(stderr, "\n");
+	va_end(args);
+	exit(1);
 }
+
+int main(int argc,char** argv)
+{
+	float num=atof(argv[argc-1]);
+	num=num*2;
+	if(argc>2)
+	{
+		printf("Twice %d\t",getpid());
+		char temp[100];
+		strcpy(temp,"./");
+		strcat(temp,argv[1]);  
+
+		char buffer[5];
+		printf("\n");
+		sprintf(buffer, "%lf", num);
+		strcpy(argv[argc-1],buffer);
+		argv[1]=temp;
+		//sleep(1);
+		printf("Error %d",execvp(argv[1],&argv[1]));
+	}
+	else if (argc==2){
+		printf("Result: %lf\tProcessid: %d\n",num,getpid());
+	}
+	else
+	{
+		printf("Invalid argument\n");
+	}
+
+	return 0;
 }
