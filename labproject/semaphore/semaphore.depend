@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1351245693 source:/home/roshan/Documents/oslab/labproject/semaphore/main.c
+	<pthread.h>
+	<stdio.h>
+	<stdlib.h>
+	</usr/include/semaphore.h>
+

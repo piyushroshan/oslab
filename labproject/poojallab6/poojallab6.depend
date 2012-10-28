@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1348217518 source:/home/roshan/Documents/oslab/labproject/poojallab6/main.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	<ctype.h>
+	<stdbool.h>
+

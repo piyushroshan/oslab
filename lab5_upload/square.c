@@ -1,4 +1,3 @@
-
 #include <stdlib.h>	
 #include <unistd.h>   // for execlp 
 #include <sys/syscall.h>
@@ -9,6 +8,7 @@
 #include <stdarg.h>
 #include <signal.h>
 #include <sys/wait.h>
+
 void error(char *message, ...)
 {
 	va_list args;
@@ -24,22 +24,24 @@ void error(char *message, ...)
 int main(int argc,char** argv)
 {
 	float num=atof(argv[argc-1]);
-	num=num*2;
+	num=num*num;
 	if(argc>2)
 	{
-		printf("Twice %d\t",getpid());
+		printf("Square %d\t",getpid());
 		char temp[100];
 		strcpy(temp,"./");
-		strcat(temp,argv[1]);  
+		strcat(temp,argv[1]);   
+
 		char buffer[10];
 		printf("\n");
 		sprintf(buffer, "%lf", num);
 		strcpy(argv[argc-1],buffer);
 		argv[1]=temp;
 		//sleep(1);
-		printf("Error %d",execvp(argv[1],&argv[1]));
+		printf("%d",execvp(argv[1],&argv[1]));
 	}
-	else if (argc==2){
+	else if (argc==2)
+	{
 		printf("Result: %lf\tProcessid: %d\n",num,getpid());
 	}
 	else
