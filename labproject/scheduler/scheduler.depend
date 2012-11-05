@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1352050335 source:/home/roshan/Documents/oslab/labproject/scheduler/main.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	<ctype.h>
+	<stdbool.h>
+

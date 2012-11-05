@@ -12,12 +12,15 @@ void *thread_func(void	*arg)
 	for(i=0;i<iteration;++i)
 	{
 		sem_wait(&chopstick[no]);
+		usleep(1);
 		sem_wait(&chopstick[(no+1)%n]);
 		printf("Philosopher %d –> Begin eating\n",no);
-		sleep(1);
+		usleep(1);
 		printf("Philosopher %d –> Finish eating\n",no);
 		sem_post(&chopstick[no]);
+		usleep(1);
 		sem_post(&chopstick[(no+1)%n]);
+		
 	}
 	pthread_exit(NULL);
 }
